@@ -1,0 +1,36 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="table-success">
+            <tr>
+                <th scope="col">Employee</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Department</th>
+                <th scope="col">Phone</th>
+                <th scope="col-center">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of Employee">
+                <th scope="row">
+                    {{emp._id}}
+                </th>
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.department}}</td>
+                <td>{{emp.mobile}}</td>
+                <td class="text-center edit-block">
+                    <span class="edit" [routerLink]="['/edit-employee/', emp._id]">
+                    <button type="button" class="btn btn-success">Edit</button>
+                </span>
+                <span class="delete" (click)="deleteEmp(emp)">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </span>
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

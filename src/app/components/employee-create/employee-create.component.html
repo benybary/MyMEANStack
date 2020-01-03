@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="col-md-4">
+        <!-- form card -->
+        <div class="card-body">
+            <form [formGroup]="frmEmployee" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="lblName">Name</label>
+                    <input type="text" class="form-control" formControlName="name" #name/>
+                    <!-- error -->
+                    <div class="invalid-feedback" *ngIf="submmited && myForm.name.errors?.required">
+                        Name is Required!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lblEmail">Email</label>
+                    <input type="email" class="form-control" formControlName="email" #email/>
+                    <!-- error -->
+                    <div class="invalid-feedback" *ngIf="submmited && myForm.email.errors?.required">
+                        Email is Required!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="drpDept">Department</label>
+                    <select class="custom-select form-control" (change)="dropDownDept($event.target.value)"
+                        formControlName="department">
+                        <option value="">Choose</option>
+                        <option *ngFor="let ed of EmployeeDepartment" value="{{ed}}">{{ed}}</option>
+                    </select>
+                    <!-- error -->
+                    <div class="invalid-feedback" *ngIf="submmited && myForm.department.errors?.required">
+                        Department is Required!
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="lblMobile">Mobile</label>
+                    <input type="text" class="form-control" formControlName="mobile" #mobile/>
+                    <!-- error -->
+                    <div class="invalid-feedback" *ngIf="submmited && myForm.mobile.errors?.required">
+                        Mobile is Required!
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="lblActive">Active</label>
+                    <input type="radio" class="custom-control custom-radio" value="active" formControlName="active"
+                        #rdoActive>
+                    <label for="lblNotActive">Not Active</label>
+                    <input type="radio" class="custom-control custom-radio" value="not active" formControlName="active"
+                        #rdoActive>
+                </div> -->
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
